@@ -1,5 +1,6 @@
 package de.teampb.adf.demos.doag.cloud.model.entities;
 
+import de.teampb.adf.demos.doag.cloud.model.queries.JobsViewRow;
 import de.teampb.adf.demos.doag.cloud.model.queries.JobsViewRowImpl;
 
 import java.math.BigDecimal;
@@ -361,6 +362,11 @@ public class EmployeesImpl extends EntityImpl {
         return EntityDefImpl.findDefObject("de.teampb.adf.demos.doag.cloud.model.entities.Employees");
     }
 
+    public void setSalaryToMax(){
+        RowSet accessor = this.getJobsAccessor();
+        JobsViewRowImpl first = (JobsViewRowImpl)accessor.first();
+        this.setSalary(BigDecimal.valueOf(first.getMaxSalary()));
+    }
 
 }
 

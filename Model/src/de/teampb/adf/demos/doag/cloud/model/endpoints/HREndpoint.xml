@@ -6,7 +6,12 @@
   Name="HREndpoint"
   Version="12.2.1.22.48"
   InheritPersonalization="merge"
-  ClearCacheOnRollback="true">
+  ClearCacheOnRollback="true"
+  ComponentClass="de.teampb.adf.demos.doag.cloud.model.endpoints.HREndpointImpl"
+  ComponentInterface="de.teampb.adf.demos.doag.cloud.model.endpoints.common.HREndpoint">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
   <ViewUsage
     Name="AllDepartments"
     ViewObjectName="de.teampb.adf.demos.doag.cloud.model.queries.DepartmentsView"/>
@@ -25,6 +30,16 @@
   <ViewUsage
     Name="JobsView1"
     ViewObjectName="de.teampb.adf.demos.doag.cloud.model.queries.JobsView"/>
+  <ViewUsage
+    Name="EmployeeById"
+    ViewObjectName="de.teampb.adf.demos.doag.cloud.model.queries.EmployeesView">
+    <ViewCriteriaUsage
+      Name="EmployeeById"
+      FullName="de.teampb.adf.demos.doag.cloud.model.queries.EmployeesView.EmployeeById"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="EmployeesUnderSingleEmployee"
+    ViewObjectName="de.teampb.adf.demos.doag.cloud.model.queries.EmployeesView"/>
   <ViewLinkUsage
     Name="EmployeesByManagerLink"
     ViewLinkObjectName="de.teampb.adf.demos.doag.cloud.model.queries.EmpManagerFkLink"
@@ -43,4 +58,23 @@
     SrcViewUsageName="de.teampb.adf.demos.doag.cloud.model.endpoints.HREndpoint.AllDepartments"
     DstViewUsageName="de.teampb.adf.demos.doag.cloud.model.endpoints.HREndpoint.EmployeesByDepartment"
     Reversed="false"/>
+  <ViewLinkUsage
+    Name="EmpManagerFkLink1"
+    ViewLinkObjectName="de.teampb.adf.demos.doag.cloud.model.queries.EmpManagerFkLink"
+    SrcViewUsageName="de.teampb.adf.demos.doag.cloud.model.endpoints.HREndpoint.EmployeeById"
+    DstViewUsageName="de.teampb.adf.demos.doag.cloud.model.endpoints.HREndpoint.EmployeesUnderSingleEmployee"
+    Reversed="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="setSalaryToMaxSalaryForEmployeesOfManager"
+      MethodName="setSalaryToMaxSalaryForEmployeesOfManager">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="managerId"
+        Type="java.lang.Integer"/>
+    </Method>
+  </ClientInterface>
 </AppModule>
