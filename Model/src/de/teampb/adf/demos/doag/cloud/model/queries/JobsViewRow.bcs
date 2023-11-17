@@ -1,0 +1,12 @@
+//Groovy Scripts for de.teampb.adf.demos.doag.cloud.model.queries.JobsView
+
+package de.teampb.adf.demos.doag.cloud.model.queries
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="JobAugmentedTitle")
+def JobAugmentedTitle_ExpressionScript_Expression()
+{
+JobTitle + ' (' + MinSalary + ' $ - ' + MaxSalary + ' $)'
+}
+

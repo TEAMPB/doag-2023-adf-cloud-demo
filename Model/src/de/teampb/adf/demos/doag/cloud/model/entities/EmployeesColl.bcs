@@ -1,0 +1,12 @@
+//Groovy Scripts for de.teampb.adf.demos.doag.cloud.model.entities.Employees
+
+package de.teampb.adf.demos.doag.cloud.model.entities
+
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@AccessorParameterExpression(accessorName="JobsAccessor", name="paramJobId")
+def paramJobId_JobsAccessor_BindVariable_BoundParameter()
+{
+JobId
+}
+

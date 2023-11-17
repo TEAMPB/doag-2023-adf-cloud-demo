@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HREndpoint"
+  Version="12.2.1.22.48"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true">
+  <ViewUsage
+    Name="AllDepartments"
+    ViewObjectName="de.teampb.adf.demos.doag.cloud.model.queries.DepartmentsView"/>
+  <ViewUsage
+    Name="AllEmployees"
+    ViewObjectName="de.teampb.adf.demos.doag.cloud.model.queries.EmployeesView"/>
+  <ViewUsage
+    Name="EmployeesUnderManager"
+    ViewObjectName="de.teampb.adf.demos.doag.cloud.model.queries.EmployeesView"/>
+  <ViewUsage
+    Name="DepartmentsWhereEmpIsManager"
+    ViewObjectName="de.teampb.adf.demos.doag.cloud.model.queries.DepartmentsView"/>
+  <ViewUsage
+    Name="EmployeesByDepartment"
+    ViewObjectName="de.teampb.adf.demos.doag.cloud.model.queries.EmployeesView"/>
+  <ViewUsage
+    Name="JobsView1"
+    ViewObjectName="de.teampb.adf.demos.doag.cloud.model.queries.JobsView"/>
+  <ViewLinkUsage
+    Name="EmployeesByManagerLink"
+    ViewLinkObjectName="de.teampb.adf.demos.doag.cloud.model.queries.EmpManagerFkLink"
+    SrcViewUsageName="de.teampb.adf.demos.doag.cloud.model.endpoints.HREndpoint.AllEmployees"
+    DstViewUsageName="de.teampb.adf.demos.doag.cloud.model.endpoints.HREndpoint.EmployeesUnderManager"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="DepartmentsByManagerLink"
+    ViewLinkObjectName="de.teampb.adf.demos.doag.cloud.model.queries.DeptMgrFkLink"
+    SrcViewUsageName="de.teampb.adf.demos.doag.cloud.model.endpoints.HREndpoint.AllEmployees"
+    DstViewUsageName="de.teampb.adf.demos.doag.cloud.model.endpoints.HREndpoint.DepartmentsWhereEmpIsManager"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="EmployeesByDepartmentLink"
+    ViewLinkObjectName="de.teampb.adf.demos.doag.cloud.model.queries.EmpDeptFkLink"
+    SrcViewUsageName="de.teampb.adf.demos.doag.cloud.model.endpoints.HREndpoint.AllDepartments"
+    DstViewUsageName="de.teampb.adf.demos.doag.cloud.model.endpoints.HREndpoint.EmployeesByDepartment"
+    Reversed="false"/>
+</AppModule>

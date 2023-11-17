@@ -1,0 +1,26 @@
+//Groovy Scripts for de.teampb.adf.demos.doag.cloud.model.entities.Employees
+
+package de.teampb.adf.demos.doag.cloud.model.entities
+
+import oracle.jbo.script.annotation.MessageParameterExpression;
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@MessageParameterExpression(validatorName="SalaryInJobRange", name="ResExpressions_max", attributeName="Salary")
+def Salary_SalaryInJobRange_ResExpressions_max_MessageParameterValues()
+{
+source.jobsAccessor.currentRow.maxSalary
+}
+
+@MessageParameterExpression(validatorName="SalaryInJobRange", name="ResExpressions_min", attributeName="Salary")
+def Salary_SalaryInJobRange_ResExpressions_min_MessageParameterValues()
+{
+source.jobsAccessor.currentRow.minSalary
+}
+
+
+@TransientValueExpression(attributeName="HireDate")
+def HireDate_ExpressionScript_Expression()
+{
+new java.util.Date()
+}
+
