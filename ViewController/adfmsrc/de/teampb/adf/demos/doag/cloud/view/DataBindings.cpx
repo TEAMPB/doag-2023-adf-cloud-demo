@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.22.48" id="DataBindings"
+             SeparateXMLFiles="false" Package="de.teampb.adf.demos.doag.cloud.view" ClientType="Generic">
+  <pageMap>
+    <page path="/WEB-INF/taskflows/hr-flow.xml#hr-flow@rollback"
+          usageId="de_teampb_adf_demos_doag_cloud_view_hr_flow_hr_flow_RollbackPageDef"/>
+    <page path="/WEB-INF/taskflows/hr-flow.xml#hr-flow@commit"
+          usageId="de_teampb_adf_demos_doag_cloud_view_hr_flow_hr_flow_CommitPageDef"/>
+    <page path="/WEB-INF/pages/overview.jsf" usageId="de_teampb_adf_demos_doag_cloud_view_overviewPageDef"/>
+    <page path="/WEB-INF/pages/editEmployee.jsf" usageId="de_teampb_adf_demos_doag_cloud_view_editEmployeePageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="de_teampb_adf_demos_doag_cloud_view_hr_flow_hr_flow_CommitPageDef"
+          path="taskflows.hr_flow_hr_flow_CommitPageDef"/>
+    <page id="de_teampb_adf_demos_doag_cloud_view_hr_flow_hr_flow_RollbackPageDef"
+          path="taskflows.hr_flow_hr_flow_RollbackPageDef"/>
+    <page id="de_teampb_adf_demos_doag_cloud_view_overviewPageDef" path="pages.overviewPageDef"/>
+    <page id="de_teampb_adf_demos_doag_cloud_view_editEmployeePageDef" path="pages.editEmployeePageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="HREndpointDataControl" Package="de.teampb.adf.demos.doag.cloud.model.endpoints"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="HREndpointLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

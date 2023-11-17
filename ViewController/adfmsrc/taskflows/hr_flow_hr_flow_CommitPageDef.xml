@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="hr_flow_hr_flow_CommitPageDef"
+                Package="taskflows" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="HREndpointDataControl"/>
+  </bindings>
+</pageDefinition>

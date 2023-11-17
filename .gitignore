@@ -24,3 +24,5 @@ hs_err_pid*
 replay_pid*
 .data/
 Model/classes/
+ViewController/classes/de/teampb/adf/demos/doag/cloud/view/DataBindings.cpx
+ViewController/classes/
