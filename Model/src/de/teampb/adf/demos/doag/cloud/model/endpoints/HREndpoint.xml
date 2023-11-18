@@ -7,8 +7,7 @@
   Version="12.2.1.22.48"
   InheritPersonalization="merge"
   ClearCacheOnRollback="true"
-  ComponentClass="de.teampb.adf.demos.doag.cloud.model.endpoints.HREndpointImpl"
-  ComponentInterface="de.teampb.adf.demos.doag.cloud.model.endpoints.common.HREndpoint">
+  ComponentClass="de.teampb.adf.demos.doag.cloud.model.endpoints.HREndpointImpl">
   <DesignTime>
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
@@ -64,17 +63,4 @@
     SrcViewUsageName="de.teampb.adf.demos.doag.cloud.model.endpoints.HREndpoint.EmployeeById"
     DstViewUsageName="de.teampb.adf.demos.doag.cloud.model.endpoints.HREndpoint.EmployeesUnderSingleEmployee"
     Reversed="false"/>
-  <ClientInterface
-    Name="__clientInterface">
-    <Method
-      Name="setSalaryToMaxSalaryForEmployeesOfManager"
-      MethodName="setSalaryToMaxSalaryForEmployeesOfManager">
-      <Return
-        Name="_return_type_"
-        Type="void"/>
-      <Parameter
-        Name="managerId"
-        Type="java.lang.Integer"/>
-    </Method>
-  </ClientInterface>
 </AppModule>

@@ -1,6 +1,5 @@
 package de.teampb.adf.demos.doag.cloud.model.endpoints;
 
-import de.teampb.adf.demos.doag.cloud.model.endpoints.common.HREndpoint;
 import de.teampb.adf.demos.doag.cloud.model.entities.EmployeesImpl;
 import de.teampb.adf.demos.doag.cloud.model.queries.EmployeesViewImpl;
 
@@ -20,7 +19,7 @@ import oracle.jbo.server.ViewRowImpl;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class HREndpointImpl extends ApplicationModuleImpl implements HREndpoint {
+public class HREndpointImpl extends ApplicationModuleImpl {
     /**
      * This is the default constructor (do not remove).
      */
@@ -97,25 +96,6 @@ public class HREndpointImpl extends ApplicationModuleImpl implements HREndpoint 
      */
     public ViewLinkImpl getEmployeesByDepartmentLink() {
         return (ViewLinkImpl) findViewLink("EmployeesByDepartmentLink");
-    }
-    
-    public void setSalaryToMaxSalaryForEmployeesOfManager(Integer managerId){
-        EmployeesViewImpl byId = this.getEmployeeById();
-        byId.getVariableManager().setVariableValue("paramEmployeeId", managerId);
-        byId.executeQuery();
-        EmployeesViewRowImpl manager = (EmployeesViewRowImpl)byId.first();
-
-        RowIterator rowIterator = manager.getEmployeesView();
-        rowIterator.reset();
-        
-        while(rowIterator.hasNext()){
-            ViewRowImpl row =  (ViewRowImpl)rowIterator.next();
-            EmployeesImpl emp = (EmployeesImpl) row.getEntity(0);
-            emp.setSalaryToMax();
-            emp.validate();
-        }
-        this.getDBTransaction().commit();
-        
     }
 
     /**

@@ -15,7 +15,8 @@
   PageIterMode="Full"
   AccessMode="DEFAULT"
   ComponentClass="de.teampb.adf.demos.doag.cloud.model.queries.EmployeesViewImpl"
-  RowClass="de.teampb.adf.demos.doag.cloud.model.queries.EmployeesViewRowImpl">
+  RowClass="de.teampb.adf.demos.doag.cloud.model.queries.EmployeesViewRowImpl"
+  ComponentInterface="de.teampb.adf.demos.doag.cloud.model.queries.common.EmployeesView">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll"/>
     <Attr Name="_isCodegen" Value="true"/>
@@ -176,4 +177,17 @@
     ViewLink="de.teampb.adf.demos.doag.cloud.model.queries.DeptMgrFkLink"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="setSalaryToMaxSalaryForEmployeesOfManager"
+      MethodName="setSalaryToMaxSalaryForEmployeesOfManager">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="managerId"
+        Type="java.lang.Integer"/>
+    </Method>
+  </ClientInterface>
 </ViewObject>
