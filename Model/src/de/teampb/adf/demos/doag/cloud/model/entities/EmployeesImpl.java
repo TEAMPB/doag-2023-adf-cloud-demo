@@ -1,6 +1,5 @@
 package de.teampb.adf.demos.doag.cloud.model.entities;
 
-import de.teampb.adf.demos.doag.cloud.model.queries.JobsViewRow;
 import de.teampb.adf.demos.doag.cloud.model.queries.JobsViewRowImpl;
 
 import java.math.BigDecimal;
@@ -8,7 +7,6 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 import oracle.jbo.Key;
-import oracle.jbo.Row;
 import oracle.jbo.RowIterator;
 import oracle.jbo.RowSet;
 import oracle.jbo.server.EntityDefImpl;

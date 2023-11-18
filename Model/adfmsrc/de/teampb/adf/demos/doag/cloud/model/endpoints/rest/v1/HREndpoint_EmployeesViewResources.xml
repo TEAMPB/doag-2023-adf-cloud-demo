@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48"
+                id="HREndpoint_EmployeesViewResources" Package="de.teampb.adf.demos.doag.cloud.model.endpoints.rest.v1"
+                usageMode="RESTClient">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="AllEmployees" RangeSize="25" DataControl="HREndpointDataControl" id="AllEmployeesIter"/>
+    <iterator Binds="EmployeeById" RangeSize="25" DataControl="HREndpointDataControl" id="EmployeeByIdIter"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="AllEmployeesIter" id="AllEmployees" AccessorFolder="Always">
+      <ServiceConfiguration EnableRowContextLOV="false"/>
+      <nodeDefinition DefName="de.teampb.adf.demos.doag.cloud.model.queries.EmployeesView"
+                      Name="de.teampb.adf.demos.doag.cloud.model.queries.EmployeesView" DiscrName="_Sys_Accessor"
+                      HintsSuffix="Overview">
+        <Actions>
+          <Action Name="delete" Enabled="#{false}"/>
+          <Action Name="create" Enabled="#{false}"/>
+          <Action Name="update" Enabled="#{false}"/>
+        </Actions>
+        <Accessors>
+          <Item Value="DepartmentsView"/>
+          <Item Value="EmployeesView"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="de.teampb.adf.demos.doag.cloud.model.queries.DepartmentsView"
+                      Name="de.teampb.adf.demos.doag.cloud.model.queries.DepartmentsView">
+        <Actions>
+          <Action Name="create" Enabled="#{false}"/>
+          <Action Name="delete" Enabled="#{false}"/>
+          <Action Name="update" Enabled="#{false}"/>
+        </Actions>
+      </nodeDefinition>
+      <nodeDefinition DefName="de.teampb.adf.demos.doag.cloud.model.queries.EmployeesView"
+                      Name="de.teampb.adf.demos.doag.cloud.model.queries.EmployeesView" DiscrName="_Sys_Accessor"
+                      DiscrValue="EmployeesView">
+        <Actions>
+          <Action Name="create" Enabled="#{false}"/>
+          <Action Name="delete" Enabled="#{false}"/>
+          <Action Name="update" Enabled="#{false}"/>
+        </Actions>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
