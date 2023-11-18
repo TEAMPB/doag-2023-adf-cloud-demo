@@ -189,5 +189,25 @@
         Name="managerId"
         Type="java.lang.Integer"/>
     </Method>
+    <Method
+      Name="forceValidationExceptionOnEntity"
+      MethodName="forceValidationExceptionOnEntity">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="managerId"
+        Type="java.lang.Integer"/>
+    </Method>
+    <Method
+      Name="setSalaryToMaxSalaryForEmployeesOfManager"
+      MethodName="setSalaryToMaxSalaryForEmployeesOfManager">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="managerId"
+        Type="java.lang.Integer"/>
+    </Method>
   </ClientInterface>
 </ViewObject>

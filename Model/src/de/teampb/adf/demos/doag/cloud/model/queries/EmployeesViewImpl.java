@@ -5,6 +5,8 @@ import de.teampb.adf.demos.doag.cloud.model.entities.EmployeesImpl;
 
 import de.teampb.adf.demos.doag.cloud.model.queries.common.EmployeesView;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.RowIterator;
 import oracle.jbo.server.ViewObjectImpl;
 import oracle.jbo.server.ViewRowImpl;
@@ -39,6 +41,17 @@ public class EmployeesViewImpl extends ViewObjectImpl implements EmployeesView {
         }
         this.getDBTransaction().commit();
         
+    }
+    
+    public void forceValidationExceptionOnEntity(Integer managerId){
+        HREndpointImpl applicationModule = (HREndpointImpl)this.getApplicationModule();
+        EmployeesViewImpl byId = applicationModule.getEmployeeById();
+        byId.ensureVariableManager().setVariableValue("paramEmployeeId", managerId);
+        byId.executeQuery();
+        EmployeesViewRowImpl employee = (EmployeesViewRowImpl)byId.first();
+        
+        employee.setSalary(new BigDecimal(999999));
+        this.getDBTransaction().commit();
     }
 }
 

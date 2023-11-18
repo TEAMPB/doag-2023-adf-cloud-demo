@@ -7,5 +7,7 @@ import oracle.jbo.ViewObject;
 // ---------------------------------------------------------------------
 public interface EmployeesView extends ViewObject {
     void setSalaryToMaxSalaryForEmployeesOfManager(Integer managerId);
+
+    void forceValidationExceptionOnEntity(Integer managerId);
 }
 
