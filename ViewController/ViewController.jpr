@@ -108,6 +108,7 @@
             <hash n="archiveOptions">
                <value n="hasManifest" v="false"/>
             </hash>
+            <value n="contextRoot" v="adfWebUi"/>
             <value n="enterpriseAppName" v="doag-cloud-demo_ViewController_webapp"/>
             <hash n="fileGroups">
                <list n="groups">

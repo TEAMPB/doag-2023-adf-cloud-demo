@@ -105,6 +105,7 @@
             <hash n="archiveOptions">
                <value n="hasManifest" v="false"/>
             </hash>
+            <value n="contextRoot" v="adfRest"/>
             <value n="enterpriseAppName" v="doag-cloud-demo_RESTWebService"/>
             <hash n="fileGroups">
                <list n="groups">
