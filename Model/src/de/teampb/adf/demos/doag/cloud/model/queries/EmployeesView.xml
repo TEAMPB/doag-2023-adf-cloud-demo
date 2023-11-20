@@ -104,6 +104,13 @@
       <SchemaBasedProperties>
         <CONTROLTYPE
           Value="choice"/>
+        <LOVResource>
+          <Version
+            value="v1"/>
+          <Resource
+            name="JobsLookup"
+            finder="JobById"/>
+        </LOVResource>
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
@@ -202,6 +209,26 @@
     <Method
       Name="setSalaryToMaxSalaryForEmployeesOfManager"
       MethodName="setSalaryToMaxSalaryForEmployeesOfManager">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="managerId"
+        Type="java.lang.Integer"/>
+    </Method>
+    <Method
+      Name="setSalaryToMaxSalaryForEmployeesOfManager"
+      MethodName="setSalaryToMaxSalaryForEmployeesOfManager">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="managerId"
+        Type="java.lang.Integer"/>
+    </Method>
+    <Method
+      Name="forceValidationExceptionOnEntity"
+      MethodName="forceValidationExceptionOnEntity">
       <Return
         Name="_return_type_"
         Type="void"/>

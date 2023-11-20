@@ -38,7 +38,6 @@
         <Actions>
           <Action Name="create" Enabled="#{false}"/>
           <Action Name="delete" Enabled="#{false}"/>
-          <Action Name="update" Enabled="#{false}"/>
         </Actions>
       </nodeDefinition>
     </tree>

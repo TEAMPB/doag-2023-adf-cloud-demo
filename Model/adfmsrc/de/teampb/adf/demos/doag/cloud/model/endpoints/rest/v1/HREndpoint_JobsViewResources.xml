@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="HREndpoint_JobsViewResources"
+                Package="de.teampb.adf.demos.doag.cloud.model.endpoints.rest.v1" usageMode="RESTClient">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="JobsView1" RangeSize="25" DataControl="HREndpointDataControl" id="JobsView1Iter"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="JobsView1Iter" id="JobsLookup" AccessorFolder="Always">
+      <ServiceConfiguration EnableRowContextLOV="false"/>
+      <nodeDefinition DefName="de.teampb.adf.demos.doag.cloud.model.queries.JobsView"
+                      Name="de.teampb.adf.demos.doag.cloud.model.queries.JobsView">
+        <Actions>
+          <Action Name="create" Enabled="#{false}"/>
+          <Action Name="delete" Enabled="#{false}"/>
+          <Action Name="update" Enabled="#{false}"/>
+        </Actions>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

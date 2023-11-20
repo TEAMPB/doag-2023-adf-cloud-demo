@@ -3,6 +3,7 @@
              SeparateXMLFiles="false" Package="de.teampb.adf.demos.doag.cloud.model" ClientType="Generic">
   <pageMap>
     <page path="v1_AllEmployees" usageId="v1_HREndpoint_EmployeesViewResources"/>
+    <page path="v1_JobsLookup" usageId="v1_HREndpoint_JobsViewResources"/>
   </pageMap>
   <dataControlUsages>
     <BC4JDataControl id="HREndpointDataControl" Package="de.teampb.adf.demos.doag.cloud.model.endpoints"
@@ -14,5 +15,7 @@
   <pageDefinitionUsages>
     <page id="v1_HREndpoint_EmployeesViewResources"
           path="de.teampb.adf.demos.doag.cloud.model.endpoints.rest.v1.HREndpoint_EmployeesViewResources"/>
+    <page id="v1_HREndpoint_JobsViewResources"
+          path="de.teampb.adf.demos.doag.cloud.model.endpoints.rest.v1.HREndpoint_JobsViewResources"/>
   </pageDefinitionUsages>
 </Application>
