@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: direct-access-nodeport-service
+  namespace: wls-doag
+spec:
+  selector:
+    weblogic.serverName: managed-server1
+  type: NodePort
+  ports:
+    - port: 8001
+      nodePort: 30000 
+      targetPort: 8001

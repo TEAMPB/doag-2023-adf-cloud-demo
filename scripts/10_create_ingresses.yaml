@@ -1,0 +1,64 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wls-admin-ingress
+  namespace: wls-doag
+spec:
+  rules:  
+    - host: k3s-master-test
+      http:
+        paths:
+          - path: /console
+            pathType: Prefix
+            backend:
+              service:
+                name: domain1-admin-server  
+                port:
+                  number: 7001
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wls-cluster-ingress
+  namespace: wls-doag
+spec:
+  rules:
+    - host: k3s-master-test
+      http:
+        paths:
+          - path: /adfWebUi
+            pathType: Prefix
+            backend:
+              service:
+                      #name: domain1-managed-server1
+                name: domain1-cluster-cluster-1
+                port:
+                  number: 8001
+          - path: /adfRest
+            pathType: Prefix
+            backend:
+              service:
+                name: domain1-cluster-cluster-1
+                port:
+                  number: 8001
+    - host: k3s-master-test.duckdns.org
+      http:
+        paths:
+          - path: /adfWebUi
+            pathType: Prefix
+            backend:
+              service:
+                name: domain1-managed-server1
+                      #name: domain1-cluster-cluster-1
+                port:
+                  number: 8001
+          - path: /adfRest
+            pathType: Prefix
+            backend:
+              service:
+                name: domain1-cluster-cluster-1
+                port:
+                  number: 8001
+

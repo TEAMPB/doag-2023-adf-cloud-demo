@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+ name: db-service
+ namespace: wls-doag
+spec:
+ type: ClusterIP
+ ports:
+ - port: 1521
+   targetPort: 1521
+---
+kind: Endpoints
+apiVersion: v1
+metadata:
+ name: db-service
+ namespace: wls-doag
+subsets:
+ - addresses:
+     - ip: 10.0.0.113
+   ports:
+     - port: 1521

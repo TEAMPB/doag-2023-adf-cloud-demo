@@ -1,0 +1,60 @@
+# Copyright (c) 2018, 2021, Oracle and/or its affiliates.
+# Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: domain1-delete-fmw-infra-sample-domain-job-cm
+  namespace: wls-doag
+  labels:
+    weblogic.domainUID: domain1
+    weblogic.domainName: domain1
+data:
+  delete-domain-job.sh: |-
+      #!/bin/bash
+      #
+      # delete domainHome folder
+      rm -rf ${DOMAIN_HOME_DIR}
+
+      echo "Delete Completed"
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: domain1-delete-fmw-infra-sample-domain-job
+  namespace: wls-doag
+spec:
+  template:
+    metadata:
+      labels:
+        weblogic.domainUID: domain1
+        weblogic.domainName: domain1
+        app: domain1-delete-fmw-infra-sample-domain-job
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: delete-fmw-infra-sample-domain-job
+          image: 10.0.0.113:5000/team-pb/fmw:12.2.1.4
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 7001
+          volumeMounts:
+          - mountPath: /u01/weblogic
+            name: delete-fmw-infra-sample-domain-job-cm-volume
+          - mountPath: /shared
+            name: fmw-infra-sample-domain-storage-volume
+          command: ["/bin/sh"]
+          args: ["/u01/weblogic/delete-domain-job.sh"]
+          env:
+            - name: DOMAIN_HOME_DIR
+              value: /shared/domains/domain1
+            - name: DOMAIN_LOGS_DIR
+              value: /shared/logs/domain1
+      volumes:
+        - name: delete-fmw-infra-sample-domain-job-cm-volume
+          configMap:
+            name: domain1-delete-fmw-infra-sample-domain-job-cm
+        - name: fmw-infra-sample-domain-storage-volume
+          persistentVolumeClaim:
+            claimName: domain1-wls-doag-pvc
+      #imagePullSecrets:
+      #- name: 

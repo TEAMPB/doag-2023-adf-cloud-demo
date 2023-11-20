@@ -1,0 +1,95 @@
+# Copyright (c) 2018, 2021, Oracle and/or its affiliates.
+# Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: domain1-create-fmw-infra-sample-domain-job
+  namespace: wls-doag
+spec:
+  template:
+    metadata:
+      labels:
+        weblogic.domainUID: domain1
+        weblogic.domainName: domain1
+        app: domain1-create-fmw-infra-sample-domain-job
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: create-fmw-infra-sample-domain-job
+          image: 10.0.0.113:5000/team-pb/fmw:12.2.1.4
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 7001
+          volumeMounts:
+          - mountPath: /u01/weblogic
+            name: create-fmw-infra-sample-domain-job-cm-volume
+          - mountPath: /shared
+            name: fmw-infra-sample-domain-storage-volume
+          - mountPath: /weblogic-operator/secrets
+            name: fmw-infra-credentials-volume
+          - mountPath: /weblogic-operator/rcu-secrets
+            name: rcu-credentials-volume
+          command: ["/bin/sh"]
+          args: ["/u01/weblogic/create-domain-job.sh"]
+          env:
+            - name: DOMAIN_UID
+              value: "domain1"
+            - name: ADMIN_SERVER_NAME_SVC
+              value: "admin-server"
+            - name: T3_CHANNEL_PORT
+              value: "30012"
+            - name: T3_PUBLIC_ADDRESS
+              value: "127.0.0.1"
+            - name: MANAGED_SERVER_NAME_BASE_SVC
+              value: "managed-server"
+            - name: CREATE_DOMAIN_SCRIPT_DIR
+              value: "/u01/weblogic"
+            - name: DOMAIN_ROOT_DIR
+              value: "/shared"
+            - name: DOMAIN_HOME_DIR
+              value: "/shared/domains/domain1"
+            - name: DOMAIN_LOGS_DIR
+              value: "/shared/logs/domain1"
+            - name: CUSTOM_DOMAIN_NAME
+              value: "domain1"
+            - name: CUSTOM_ADMIN_LISTEN_PORT
+              value: "7001"
+            - name: CUSTOM_ADMIN_NAME
+              value: "admin-server"
+            - name: CUSTOM_ADMIN_HOST
+              value: "%CUSTOM_ADMIN_HOST%"
+            - name: CUSTOM_MANAGEDSERVER_PORT
+              value: "8001"
+            - name: CUSTOM_MANAGED_BASE_NAME
+              value: "managed-server"
+            - name: CUSTOM_MANAGED_SERVER_COUNT
+              value: "5"
+            - name: CUSTOM_CLUSTER_NAME
+              value: "cluster-1"
+            - name: CUSTOM_RCUPREFIX
+              value: "FMW1"
+            - name: CUSTOM_PRODUCTION_MODE
+              value: "true"
+            - name: CUSTOM_CONNECTION_STRING
+              value: "db-service.wls-doag:1521/FREEPDB1"
+            - name: EXPOSE_T3_CHANNEL_PREFIX
+              value: "false"
+            - name: PROXY_VAL
+              value: ""
+            - name: DOMAIN_TYPE
+              value: "JRF"
+      volumes:
+        - name: create-fmw-infra-sample-domain-job-cm-volume
+          configMap:
+            name: domain1-create-fmw-infra-sample-domain-job-cm
+        - name: fmw-infra-sample-domain-storage-volume
+          persistentVolumeClaim:
+            claimName: domain1-wls-doag-pvc
+        - name: fmw-infra-credentials-volume
+          secret:
+            secretName: domain1-weblogic-credentials
+        - name: rcu-credentials-volume
+          secret:
+            secretName: domain1-rcu-credentials
+      #imagePullSecrets:
+      #- name: 

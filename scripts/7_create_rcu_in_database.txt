@@ -1,0 +1,28 @@
+kubectl run rcu --image 10.0.0.113:5000/team-pb/fmw:12.2.1.4 -- sleep infinity
+
+kubectl exec -ti rcu -- /bin/bash
+
+---
+
+/u01/oracle/oracle_common/bin/rcu \
+  -silent \
+  -createRepository \
+  -databaseType ORACLE \
+  -connectString db-service.wls-doag:1521/FREEPDB1 \
+  -dbUser sys \
+  -dbRole sysdba \
+  -useSamePasswordForAllSchemaUsers true \
+  -selectDependentsForComponents true \
+  -schemaPrefix FMW1 \
+  -component MDS \
+  -component IAU \
+  -component IAU_APPEND \
+  -component IAU_VIEWER \
+  -component OPSS  \
+  -component WLS  \
+  -component STB
+
+pw oracle
+
+---
+kubectl delete pod rcu
