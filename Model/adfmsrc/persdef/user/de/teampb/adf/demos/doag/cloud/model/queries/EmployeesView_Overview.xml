@@ -7,15 +7,6 @@
   Version="12.2.1.22.48"
   StaticDef="de.teampb.adf.demos.doag.cloud.model.queries.EmployeesView">
   <PDefAttribute
-    Name="EmployeeId">
-    <Properties>
-      <SchemaBasedProperties>
-        <PAYLOADHINT
-          Value="Hide"/>
-      </SchemaBasedProperties>
-    </Properties>
-  </PDefAttribute>
-  <PDefAttribute
     Name="Email">
     <Properties>
       <SchemaBasedProperties>
